@@ -1,5 +1,4 @@
 ﻿using Spectre.Console;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ExerciseTracker;
 

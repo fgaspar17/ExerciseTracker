@@ -1,5 +1,4 @@
-﻿
-namespace ExerciseTracker;
+﻿namespace ExerciseTracker;
 
 public class RepositoryDispatcher<T> : IRepository<T>
 {
@@ -42,12 +41,14 @@ public class RepositoryDispatcher<T> : IRepository<T>
     {
         get
         {
-            return selector() switch
+            IRepository<T>? repository = selector() switch
             {
                 DbOption.SqlServerEntityFramework => repositories.Where(r => r.GetType() == typeof(ExerciseRepositoryEf)).FirstOrDefault(),
                 DbOption.SqliteAdoNet => repositories.Where(r => r.GetType() == typeof(ExerciseAdoNetRepository)).FirstOrDefault(),
                 _ => throw new NotImplementedException()
-            };
+            } ?? throw new NotImplementedException(); 
+
+            return repository;
         }
     }
 }

@@ -13,7 +13,7 @@ public class ExerciseController : IExerciseController
 
     public IEnumerable<Exercise> GetExercises() => _repository.GetAll();
     public Exercise? GetExerciseById(int id) => _repository.GetById(id);
-    public bool CreateExercise(Exercise exercise) 
+    public bool CreateExercise(Exercise exercise)
     {
         try
         {
@@ -26,7 +26,7 @@ public class ExerciseController : IExerciseController
             return false;
         }
     }
-    public bool UpdateExercise(Exercise exercise) 
+    public bool UpdateExercise(Exercise exercise)
     {
         try
         {
@@ -39,7 +39,7 @@ public class ExerciseController : IExerciseController
             return false;
         }
     }
-    public bool DeleteExercise(Exercise exercise) 
+    public bool DeleteExercise(Exercise exercise)
     {
         try
         {

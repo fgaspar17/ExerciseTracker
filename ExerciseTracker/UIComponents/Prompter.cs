@@ -15,7 +15,7 @@ public static class Prompter
         );
     }
 
-    public static (bool IsCancelled, string? Result) PromptWithValidation(string message, 
+    public static (bool IsCancelled, string? Result) PromptWithValidation(string message,
         string defaultValue = null, bool allowEmpty = false, params IValidator[] validations)
     {
         var textPrompt = new TextPrompt<string>($"{message}{CancelSetup.CancelPrompt}:")

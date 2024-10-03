@@ -35,8 +35,8 @@ public class Startup
                 services.AddTransient(typeof(IRepository<Exercise>), (r =>
                 {
                     return new RepositoryDispatcher<Exercise>(() => GlobalConfig.CurrentDatabase,
-                        new List<IRepository<Exercise>> { r.GetRequiredService<ExerciseAdoNetRepository>(),
-                            r.GetRequiredService<ExerciseRepositoryEf>(), });
+                        [ r.GetRequiredService<ExerciseAdoNetRepository>(),
+                            r.GetRequiredService<ExerciseRepositoryEf>(), ]);
                 }));
                 services.AddTransient(typeof(IExerciseController), typeof(ExerciseController));
                 services.AddTransient(typeof(ExerciseService));

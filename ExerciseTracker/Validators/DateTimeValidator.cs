@@ -3,7 +3,6 @@ using System.Globalization;
 
 namespace ExerciseTracker;
 
-// TODO: Decorator Pattern for FutureValidate
 public class DateTimeValidator : IValidator
 {
     public string DateFormat = "yyyy-MM-dd HH:mm";
