@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ExerciseTrackerLibrary;
+namespace ExerciseTracker;
 
 public class ExerciseContext : DbContext
 {

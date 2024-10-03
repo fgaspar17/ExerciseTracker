@@ -1,4 +1,4 @@
-﻿namespace ExerciseTrackerLibrary;
+﻿namespace ExerciseTracker;
 
 public interface IRepository<T>
 {

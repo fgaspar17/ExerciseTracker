@@ -1,17 +1,55 @@
-﻿namespace ExerciseTrackerLibrary;
+﻿using Spectre.Console;
 
-public class ExerciseController
+namespace ExerciseTracker;
+
+public class ExerciseController : IExerciseController
 {
-    private IRepository<Exercise> _repository;
+    private readonly IRepository<Exercise> _repository;
 
-    public ExerciseController(ExerciseContext exerciseContext)
+    public ExerciseController(IRepository<Exercise> repository)
     {
-        _repository = new ExerciseRepository(exerciseContext);
+        _repository = repository;
     }
 
     public IEnumerable<Exercise> GetExercises() => _repository.GetAll();
     public Exercise? GetExerciseById(int id) => _repository.GetById(id);
-    public void CreateExercise(Exercise exercise) => _repository.Add(exercise);
-    public void UpdateExercise(Exercise exercise) => _repository.Update(exercise);
-    public void DeleteExercise(Exercise exercise) => _repository.Delete(exercise);
+    public bool CreateExercise(Exercise exercise) 
+    {
+        try
+        {
+            _repository.Add(exercise);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            AnsiConsole.WriteException(ex);
+            return false;
+        }
+    }
+    public bool UpdateExercise(Exercise exercise) 
+    {
+        try
+        {
+            _repository.Update(exercise);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            AnsiConsole.WriteException(ex);
+            return false;
+        }
+    }
+    public bool DeleteExercise(Exercise exercise) 
+    {
+        try
+        {
+            _repository.Delete(exercise);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            AnsiConsole.WriteException(ex);
+            return false;
+        }
+    }
 }

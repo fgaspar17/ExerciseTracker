@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ExerciseTrackerLibrary;
+namespace ExerciseTracker;
 
 public abstract class EntityFrameworkRepository<T> : IRepository<T> where T : class
 {
@@ -31,6 +31,7 @@ public abstract class EntityFrameworkRepository<T> : IRepository<T> where T : cl
 
     public void Update(T entity)
     {
+        _context.ChangeTracker.Clear();
         _context.Entry(entity).State = EntityState.Modified;
         _context.SaveChanges();
     }
